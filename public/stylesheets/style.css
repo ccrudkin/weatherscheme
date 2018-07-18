@@ -1,8 +1,40 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+    box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+body {
+    font-family: "Raleway", sans-serif;
+    margin: 0;
+}
+
+.main {
+    background-color: #666;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.mast {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#mainHead {
+    font-size: 6em;
+    color: #ccc;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    background-color: #888;
+    flex-grow: 1;
+}
+
+#location {
+    font-size: 2em;
+    margin-top: 3em;
+    font-family: "Roboto", sans-serif;
 }

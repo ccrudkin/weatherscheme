@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include header %>
+    <div class="main">
+        <div class="mast">
+            <span id="mainHead">Weatherscheme</span>
+        </div>
+        <div class="page">
+            <form id="location">
+                <label for="locationInput">Enter location:</label>
+                <br>
+                <input type="text" id="locationInput" placeholder="Address or landmark" style="font-family:'Roboto',sans-serif">
+            </form>
+        </div>
+    </div>
+    <script src="/javascripts/primary.js"></script>
+<% include footer %>
