@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: "Raleway", sans-serif;
+    font-family: "Roboto", sans-serif;
     margin: 0;
 }
 
@@ -15,10 +15,12 @@ body {
 }
 
 .mast {
+    font-family: "Raleway", sans-serif;
     width: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
+    padding: 1em;
 }
 
 #mainHead {
@@ -35,6 +37,39 @@ body {
 
 #location {
     font-size: 2em;
+    color: #ccc;
+    background-color: #666;
     margin-top: 3em;
-    font-family: "Roboto", sans-serif;
+    padding: 1em;
+    border-radius: 1em;
+    height: 100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#locationInput {
+    font-size: .5em;
+    padding: .25em;
+    color: #222;
+    border-radius: .25em;
+    border: 1px solid #222;
+    margin: 1em .5em;
+    width: 20em;
+}
+
+.button {
+    font-size: .75em;
+    color: #666;
+    background-color: #ccc;
+    border: 2px solid #ccc;
+    border-radius: .25em;
+    padding: .25em .5em;
+}
+
+.button:hover {
+    color: #ccc;
+    background-color: #666;
+    cursor: pointer;
 }

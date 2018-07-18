@@ -4,11 +4,11 @@
             <span id="mainHead">Weatherscheme</span>
         </div>
         <div class="page">
-            <form id="location">
-                <label for="locationInput">Enter location:</label>
-                <br>
-                <input type="text" id="locationInput" placeholder="Address or landmark" style="font-family:'Roboto',sans-serif">
-            </form>
+            <div id="location">
+                <label for="locationInput">Enter coordinates:</label>
+                <input type="text" id="locationInput" placeholder="Ex.: 40.016457, -105.285884" autocomplete="off">
+                <button class="button" id="submitButton">Get scheme</button>
+            </div>
         </div>
     </div>
     <script src="/javascripts/primary.js"></script>
