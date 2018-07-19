@@ -9,8 +9,10 @@ router.get('/', function(req, res, next) {
 
 router.get("/conditions/:location", function(req, res) {
     let key = process.env.darkskykey;
+    // let key = "###"; // swap and inclue ONLY for demo and dev purposes
     let coors = req.params.location;
     // let geokey = process.env.liqkey;
+    console.log(key);
     let url = `https://api.darksky.net/forecast/${key}/${coors}`;
  
     request(url, { json: true }, (err, response, body) => {
