@@ -14,8 +14,11 @@ Open a command line interface in the root of the project folder and run `npm ins
 To run the app using your local machine as a server, follow the basic instructions from the Express docs:
 
 > On MacOS or Linux, run the app with this command:
+
 > `DEBUG=weatherscheme:* npm start`
+
 > On Windows, use this command:
+
 > `set DEBUG=weatherscheme:* & npm start`
 
 Finally, navigate to your local IP and port to access the site. It will usually be `http://127.0.0.1:3000/` or something similar.
