@@ -1,20 +1,21 @@
 <% include header %>
-    <div class="main">
+    <div class="main colFlex">
         <div class="mast">
             <span id="mainHead">Weatherscheme</span>
         </div>
-        <div class="page">
-            <div id="location">
-                <label for="locationInput">Enter coordinates:</label>
-                <input type="text" id="locationInput" placeholder="Ex.: 40.016457, -105.285884" autocomplete="off">
+        <div class="page colFlex">
+            <div class="inputModule colFlex" id="location">
+                <label for="locationInput">Enter a location:</label>
+                <input type="text" class="medInput" id="locationInput" placeholder="Ex.: Denver, CO" autocomplete="off">
                 <button class="button" id="submitButton">Get scheme</button>
             </div>
+            <div class="iconDesc" id="description"></div>
             <div class="icon" id="iconPlace"></div>
             <div class="conditions">
-                <span id="conditionsReport"></span>
+                <span class="colFlex" id="conditionsReport"></span>
             </div>
         </div>
-        <div id="attribution">
+        <div class="smallBadge" id="attribution">
             <span>Powered by DarkSky</span>
         </div>
         <div class="gradient"></div>
