@@ -1,10 +1,10 @@
 # weatherscheme
 A simple app that generates a dynamic color scheme based on local weather conditions.
 
-Usage:
+### Usage:
 Enter a location by address, landmark, or city + state / country in the input field to begin (e.g., "Denver, CO" or "the Statue of Liberty"). Hit enter, or click "Get scheme" to fetch the weather and generate a color scheme for the given locale.
 
-Project / server setup:
+### Project / server setup:
 Clone from Github into new local repository.
 
 This is a Node.js application, and thus Node is the primary dependency. If you haven't [downloaded and installed Node](https://nodejs.org/), do so.
