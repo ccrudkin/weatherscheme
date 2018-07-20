@@ -82,16 +82,16 @@ function createGradient(temp) {
     function newGrad() {
         // create map object for gradient points, cooler to warmer
         let colorMap = {
-            0: [ "#3949ab", "#5c6bc0"],
-            1: [ "#1565c0", "#1e88e5" ],
-            2: [ "#00838f", "#00acc1" ],
-            3: [ "#00838f", "#00acc1" ],
-            4: [ "#558b2f", "#7cb342" ],
-            5: [ "#558b2f", "#7cb342" ],
-            6: [ "#afb42b", "#cddc39" ],
-            7: [ "#afb42b", "#cddc39" ],
-            8: [ "#bf360c", "#e64a19" ],
-            9: [ "#b71c1c", "#d32f2f" ]
+            0: [ "#3949ab", "#9FA8DA"],
+            1: [ "#1565c0", "#42A5F5" ],
+            2: [ "#00838f", "#26C6DA" ],
+            3: [ "#00838f", "#26C6DA" ],
+            4: [ "#558b2f", "#9CCC65" ],
+            5: [ "#558b2f", "#9CCC65" ],
+            6: [ "#afb42b", "#DCE775" ],
+            7: [ "#afb42b", "#DCE775" ],
+            8: [ "#bf360c", "#FF7043" ],
+            9: [ "#b71c1c", "#EF5350" ]
         }
 
         // map temp to colorMap object

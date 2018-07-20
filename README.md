@@ -27,6 +27,6 @@ Finally, navigate to your local IP and port to access the site. With this standa
 The app will not be able to communicate with the external APIs without a `.env` file. That is not included in the repo for security reasons, but can be sent separately or recreated.
 
 ### Project file structure:
-This app uses standard Express file structure. The main app is contained in `app.js`, while `/routes` contains the basic router script that handles server-side requests and process.
+This app uses standard Express file structure. The main app is contained in `app.js`, while `/routes` contains the basic router script that handles server-side requests and processes.
 
 The `/public` folder contains `/images`, `/javascripts`, and `/stylesheets`, which are self-explanatory; `/views` contains the EJS files that render into HTML.
