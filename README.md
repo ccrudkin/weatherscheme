@@ -21,7 +21,7 @@ To run the app using your local machine as a server, follow the basic instructio
 
 > `set DEBUG=weatherscheme:* & npm start`
 
-Finally, navigate to your local IP and port to access the site. With this standard setup, it will usually be `http://127.0.0.1:3000/` (or something similar).
+Finally, navigate to your local host IP and port to access the site. With this standard setup, it will usually be `http://127.0.0.1:3000/` (or something quite similar).
 
 #### NOTE:
 The app will not be able to communicate with the external APIs without a `.env` file. That is not included in the repo for security reasons, but can be sent separately or recreated.

@@ -17,40 +17,36 @@ function getconditions() {
 
 // check if temp data is present; if it is, create and render the color scheme
 function createScheme(data) {
+    // short-circuit execution if location data is missing
+    if (data[0] === 0) {
+        missingCond();
+        return;
+    }
+
     let temp = data.currently.temperature; // Fahrenheit
-    let precip = data.currently.precipProbability; // between 0 and 1 inclusive
+    let humidity = data.currently.humidity; // between 0 and 1 inclusive
     let icon = data.currently.icon; // icon call to corresponding filenames in /images
     let summary = data.currently.summary; // human readable conditions, 1-4 words usually
 
     // if temp data is missing, we can't make the color scheme, so we can abort the rest
-    if (temp === undefined) {
-        $(".gradient").fadeOut(400, "swing");
-        $(".conditions").fadeOut(400, "swing", missingCond);
-
-        function missingCond() {
-            document.getElementById("conditionsReport").innerHTML = "Location is invalid or missing data. Please try again.";
-            $(".conditions").fadeIn(600, "swing");
-        }
-
-        // Give user some error feedback
-        placeDesc("Oops!");
-        placeIcon("error");
+    if (temp === undefined || data[0] === 0) {
+        missingCond();
         return;
     } else {
         createGradient(temp);
-        placeConditions(temp, precip, data); // include all "data" to more easily add features
+        placeConditions(temp, humidity, data); // include all "data" to more easily add features
         placeDesc(summary);
         placeIcon(icon);
     }
 }
 
 // insert and fade in conditions description
-function placeConditions(temp, precip, data) {
+function placeConditions(temp, humidity, data) {
     $(".conditions").fadeOut(400, "swing", replaceConditions);
     function replaceConditions() {
         document.getElementById("conditionsReport").innerHTML = `<span>Currently: 
-                                ${Math.round(temp)} F with a ${Math.round(precip * 100)} 
-                                percent chance of precipitation.</span>
+                                ${Math.round(temp)} F with ${Math.round(humidity * 100)} 
+                                percent humidity.</span>
                                 <span class=latlon><i>Lat.: ${data.latitude}, 
                                 Long.: ${data.longitude}</i></span>`;
         $(".conditions").fadeIn();
@@ -61,7 +57,7 @@ function placeConditions(temp, precip, data) {
 function placeIcon(icon) {
     $(".icon").fadeOut(400, "swing", replace);
     function replace() {
-        document.getElementById("iconPlace").innerHTML = `<img src="/images/${icon}.svg" alt="weathericon">`;
+        document.getElementById("iconPlace").innerHTML = `<img src="/images/${icon}.svg" alt="${icon} icon">`;
         $(".icon").fadeIn(600, "swing");
     }
 }
@@ -111,6 +107,22 @@ function createGradient(temp) {
             $(".gradient").fadeIn(600, "swing");
         }
     }
+}
+
+// if something went wrong with either API, or location data is missing, give error
+function missingCond() {
+    $(".gradient").fadeOut(400, "swing");
+    $(".conditions").fadeOut(400, "swing", placeMissingError);
+
+    function placeMissingError() {
+        document.getElementById("conditionsReport").innerHTML = "Location is invalid or missing data. Please try again.";
+        $(".conditions").fadeIn(600, "swing");
+    }
+
+    // Give user some error feedback
+    placeDesc("Oops!");
+    placeIcon("error");
+    return;
 }
 
 document.getElementById("submitButton").addEventListener("click", getconditions);

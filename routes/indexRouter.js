@@ -19,7 +19,7 @@ router.get("/conditions/:location", function(req, res) {
     
         request(url, { json: true }, (err, response, body) => {
             if (err) {
-                res.send("Geocoding error.");
+                res.send([ 0, "Geocoding error." ]);
             } else {
                 // console.log(`Body:\n${JSON.stringify(body, null, 2)}`); // debug
                 // console.log(`latlon: ${body[0].lat},${body[0].lon}`); // debug
@@ -37,7 +37,7 @@ router.get("/conditions/:location", function(req, res) {
      
         request(url, { json: true }, (err, response, body) => {
             if (err) { 
-                res.send("API error.");
+                res.send([ 0, "API error." ]);
             } else {
                 res.send(body);
             }
