@@ -21,10 +21,10 @@ To run the app using your local machine as a server, follow the basic instructio
 
 > `set DEBUG=weatherscheme:* & npm start`
 
-Finally, navigate to your local host IP and port to access the site. With this standard setup, it will usually be `http://127.0.0.1:3000/` (or something quite similar).
+Finally, navigate to your local host IP and port to access the site. With this standard setup, it will usually be `http://127.0.0.1:3000/` (or something quite similar). You may need to adjust firewall settings to allow Node.js through.
 
-#### NOTE:
-The app will not be able to communicate with the external APIs without a `.env` file. That is not included in the repo for security reasons, but can be sent separately or recreated.
+#### NOTES:
+The app will not be able to communicate with the external APIs without a `.env` file. That is not included in the repo for security reasons, but can be sent separately or recreated. This file must be named `.env` exactly, which can be accomplished by typing `.env.` on Windows, which the OS 'corrects' by dropping the trailing dot.
 
 ### Project file structure:
 This app uses standard Express file structure. The main app is contained in `app.js`, while `/routes` contains the basic router script that handles server-side requests and processes.
