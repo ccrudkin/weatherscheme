@@ -9,7 +9,7 @@ Clone Weatherscheme from Github into a new local repository.
 
 This is a Node.js application, and thus Node is the primary dependency. If you haven't [downloaded and installed Node](https://nodejs.org/), do so.
 
-Open a command line interface in the root of the project folder and run `npm install` to create the `node_modules` folder and Express with all of the other project dependencies.
+Open a command line interface in the root of the project folder and run `npm install` to create the `node_modules` folder and install Express with all of the other project dependencies.
 
 To run the app using your local machine as a server, follow the basic instructions from the [Express docs](https://expressjs.com/en/starter/generator.html):
 
