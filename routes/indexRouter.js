@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const request = require('request');
-const dotenv = require('dotenv').config(); // if running npm start; unnecessary for heroku local
+require('dotenv').config(); // if running via npm; unnecessary for heroku
 
 // GET main app page
 router.get('/', function(req, res, next) {
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 router.get("/conditions/:location", function(req, res) {
     let location = req.params.location;
 
-    // use LocationIQ to geocode given location (convert to lat/lon)
+    // use LocationIQ API to geocode given location (convert to lat/lon)
     function convertLocation(location) {
         const key = process.env.liqkey;
         let url = `https://us1.locationiq.org/v1/search.php?key=${key}&q=${location}&format=json`;
@@ -21,8 +21,8 @@ router.get("/conditions/:location", function(req, res) {
             if (err) {
                 res.send([ 0, "Geocoding error." ]);
             } else {
-                // console.log(`Body:\n${JSON.stringify(body, null, 2)}`); // debug
-                // console.log(`latlon: ${body[0].lat},${body[0].lon}`); // debug
+                // console.log(`Body:\n${JSON.stringify(body, null, 2)}`); // for debug
+                // console.log(`latlon: ${body[0].lat},${body[0].lon}`); // for debug
                 let coors = `${body[0].lat},${body[0].lon}`;
                 getConditions(coors);
             }
