@@ -28,7 +28,8 @@ function createScheme(data) {
     let icon = data.currently.icon; // icon call to corresponding filenames in /images
     let summary = data.currently.summary; // human readable conditions, 1-4 words usually
 
-    // if temp data is missing, we can't make the color scheme, so we can abort the rest
+    // if temp data is missing or there was an error, we can't 
+    // make the color scheme, and thus we can abort the rest
     if (temp === undefined || data[0] === 0) {
         missingCond();
         return;

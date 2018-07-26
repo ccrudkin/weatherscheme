@@ -12,45 +12,39 @@ router.get('/', function(req, res, next) {
 router.get("/conditions/:location", function(req, res) {
     let location = req.params.location;
 
-    getLocation(location)
-    .then((coors) => { return getConditions(coors) })
-    .then((data) => { res.send(data) } )
-    .catch((err) => { res.send(`Location Error!\n${err}`) });
-});
-
-function getLocation(location) {
-    return new Promise((resolve, reject) => {
+    // use LocationIQ API to geocode given location (convert to lat/lon)
+    function convertLocation(location) {
         const key = process.env.liqkey;
         let url = `https://us1.locationiq.org/v1/search.php?key=${key}&q=${location}&format=json`;
 
         request(url, { json: true }, (err, response, body) => {
             if (err) {
-                reject(err);
+                res.send([ 0, "Geocoding error." ]);
             } else {
                 // console.log(`Body:\n${JSON.stringify(body, null, 2)}`); // for debug
                 // console.log(`latlon: ${body[0].lat},${body[0].lon}`); // for debug
                 let coors = `${body[0].lat},${body[0].lon}`;
-                resolve(coors);
+                getConditions(coors);
             }
         });
-    });
-}
+    }
 
-function getConditions(coors) {
-    return new Promise((resolve, reject) => {
+    // use lat/lon to get weather conditions from DarkSky
+    function getConditions(coors) {
         console.log("Coors: " + coors);
         let key = process.env.darkskykey;
         let url = `https://api.darksky.net/forecast/${key}/${coors}`;
-        
+    
         request(url, { json: true }, (err, response, body) => {
-            if (err) {
-                reject(err);
+            if (err) { 
+                res.send([ 0, "API error." ]);
             } else {
-                console.log("Conditions request resolved.");
-                resolve(body);
+                res.send(body);
             }
-        }); 
-    });
-}
+        });
+    }
+
+    convertLocation(location);
+});
 
 module.exports = router;
