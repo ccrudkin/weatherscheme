@@ -15,7 +15,7 @@ router.get("/conditions/:location", function(req, res) {
     getLocation(location)
     .then((coors) => { return getConditions(coors) })
     .then((data) => { res.send(data) } )
-    .catch((err) => { res.send(`Location Error!\n${err}`) });
+    .catch((err) => { res.send([ 0, err ]) });
 });
 
 function getLocation(location) {
@@ -27,10 +27,14 @@ function getLocation(location) {
             if (err) {
                 reject(err);
             } else {
-                // console.log(`Body:\n${JSON.stringify(body, null, 2)}`); // for debug
+                // console.log(`Response:\n${JSON.stringify(response, null, 1)}`); // debug
                 // console.log(`latlon: ${body[0].lat},${body[0].lon}`); // for debug
-                let coors = `${body[0].lat},${body[0].lon}`;
-                resolve(coors);
+                if (response.statusCode >= 400) {
+                    reject([ 0, "Geocoding error." ]);
+                } else {
+                    let coors = `${body[0].lat},${body[0].lon}`;
+                    resolve(coors);
+                }
             }
         });
     });
@@ -38,7 +42,7 @@ function getLocation(location) {
 
 function getConditions(coors) {
     return new Promise((resolve, reject) => {
-        console.log("Coors: " + coors);
+        // console.log("Coordinates: " + coors); // debug
         let key = process.env.darkskykey;
         let url = `https://api.darksky.net/forecast/${key}/${coors}`;
         
@@ -46,7 +50,7 @@ function getConditions(coors) {
             if (err) {
                 reject(err);
             } else {
-                console.log("Conditions request resolved.");
+                // console.log("Conditions request resolved."); // debug
                 resolve(body);
             }
         }); 
